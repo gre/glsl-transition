@@ -37,6 +37,7 @@ module.exports = function (grunt) {
 
   // Project configuration.
   grunt.initConfig({
+    pkg: require("./package.json"),
     jshint: {
       options: grunt.file.readJSON('.jshintrc'),
       src: ['src/*.js']
@@ -58,6 +59,9 @@ module.exports = function (grunt) {
       }
     },
     uglify: {
+      options: {
+        banner: "/*! <%= pkg.name %> <%= pkg.version %> – <%= pkg.license %> License – https://github.com/glslio/glsl-transition */\n"
+      },
       lib: {
         src: "dist/.tmp.glsl-transition.js",
         dest: "dist/glsl-transition.js"

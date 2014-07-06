@@ -55,7 +55,7 @@ function GlslTransition (canvas/*, opts*/) {
     var transitionCore = createTransitionCore.apply(this, arguments);
     var glslUniforms = transitionCore.getUniforms();
     
-    if (!defaultUniforms) defaultUniforms = {};
+    if (typeof defaultUniforms !== "object") defaultUniforms = {};
     if (arguments.length < 1 || arguments.length > 2 || typeof glsl !== "string")
       throw new Error("Bad arguments. usage: T(glsl [, options])");
 
