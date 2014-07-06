@@ -186,4 +186,11 @@ GlslTransition.TransitionAbortedError = TransitionAbortedError;
 GlslTransition.defaults = GlslTransitionCore.defaults;
 GlslTransition.isSupported = GlslTransitionCore.isSupported;
 
+// Also exposes the internal libraries to be usable in the dist version
+GlslTransition.GlslTransitionCore = GlslTransitionCore;
+GlslTransition.Q = Q;
+GlslTransition.requestAnimationFrame = requestAnimationFrame;
+GlslTransition.now = now;
+
+
 module.exports = GlslTransition;
