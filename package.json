@@ -1,6 +1,6 @@
 {
   "name": "glsl-transition",
-  "version": "0.6.2",
+  "version": "0.6.3",
   "description": "Make Transitions Effects with the power of WebGL Shaders (GLSL)",
   "keywords": [
     "glsl",
