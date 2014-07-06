@@ -44,7 +44,7 @@ module.exports = function (grunt) {
     browserify: {
       lib: {
         src: 'src/glsl-transition.js',
-        dest: 'dist/glsl-transition.js',
+        dest: 'dist/.tmp.glsl-transition.js',
         options: {
           standalone: "GlslTransition"
         }
@@ -57,10 +57,16 @@ module.exports = function (grunt) {
         }
       }
     },
+    uglify: {
+      lib: {
+        src: "dist/.tmp.glsl-transition.js",
+        dest: "dist/glsl-transition.js"
+      }
+    },
     watch: {
       lib: {
         files: '<%= browserify.lib.src %>',
-        tasks: ['jshint', 'browserify:lib']
+        tasks: ['jshint', 'browserify:lib', 'uglify']
       },
       test: {
         files: ['test/**.js', '!test/bundle.js'],
@@ -108,7 +114,7 @@ module.exports = function (grunt) {
 
 
   grunt.registerTask('default', ['build', 'watch']);
-  grunt.registerTask('build', ['jshint', 'browserify']);
+  grunt.registerTask('build', ['jshint', 'browserify', 'uglify']);
   grunt.registerTask('publish', ['build', 'shell:buildExample', 'gh-pages']);
   grunt.registerTask('test', ['jshint', 'browserify', 'connect:test', 'watch']);
   grunt.registerTask('test-sauce', ['build', 'connect:test', 'saucelabs-mocha']);

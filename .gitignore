@@ -2,4 +2,5 @@
 bundle.js
 node_modules
 components
+.tmp.*
 
