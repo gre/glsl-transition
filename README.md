@@ -23,6 +23,27 @@ require(["glsl-transition"], function (GlslTransition) {});
 var GlslTransition = window.GlslTransition;
 ```
 
+Example
+---
+
+```javascript
+var canvasTransition = GlslTransition(canvas);
+var awesomeTransition1 = canvasTransition(glslSourceCode);
+var awesomeTransition2 = canvasTransition(anotherGlslSourceCode);
+var linear = function linear (x) { return x; };
+var square = function (x) { return x*x; };
+
+awesomeTransition1({ from: img1, to: img2 }, 500, linear)
+  .then(function(){
+    return awesomeTransition2({ from: img2, to: img3 }, 1000);
+  })
+  .then(function(){
+    return awesomeTransition1({ from: img3, to: img1 }, 2000, square);
+  })
+  ...;
+```
+
+
 ## The API
 
 ```javascript
@@ -44,26 +65,6 @@ It is important to have these 3-level function calls, both for **optimization** 
   * `endAt`: milliseconds timestamp of the end time.
   * `elapsedTime`: milliseconds effective duration of the transition.
   * `frames`: number of redraw during the transition.
-
-Example
----
-
-```javascript
-var canvasTransition = GlslTransition(canvas);
-var awesomeTransition1 = canvasTransition(glslSourceCode);
-var awesomeTransition2 = canvasTransition(anotherGlslSourceCode);
-var linear = function linear (x) { return x; };
-var square = function (x) { return x*x; };
-
-awesomeTransition1({ from: img1, to: img2 }, 500, linear)
-  .then(function(){
-    return awesomeTransition2({ from: img2, to: img3 }, 1000);
-  })
-  .then(function(){
-    return awesomeTransition1({ from: img3, to: img1 }, 2000, square);
-  })
-  ...;
-```
 
 ### `uniforms` object and GLSL conventions
 
