@@ -22,8 +22,8 @@
   "dependencies": {
     "glsl-transition-core": "0.1.x",
     "q": "1.0.x",
-    "raf": "2.0.1",
-    "performance-now": "0.1.3"
+    "raf": "2.0.x",
+    "performance-now": "0.2.x"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
