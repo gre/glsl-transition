@@ -20,7 +20,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "glsl-transition-core": "0.1.x",
+    "glsl-transition-core": "0.2.x",
     "q": "1.0.x",
     "raf": "2.0.x",
     "performance-now": "0.2.x"
