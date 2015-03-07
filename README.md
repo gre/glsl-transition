@@ -110,11 +110,9 @@ Another more functional way to do it is also to recover the promise resulting of
 Tests
 ---
 
-[**Open Tests Here**](http://greweb.me/glsl-transition/test)
-
-[![SauceLabs Status](https://saucelabs.com/browser-matrix/glsl-transition.svg)](https://saucelabs.com/u/glsl-transition)
-
-// Oops, SauceLabs doesn't support WebGL yet. but [this may come soon](https://twitter.com/saucelabs/status/418861018400313344)!
+```
+npm test
+```
 
 
 ## See also
