@@ -1,7 +1,7 @@
 {
   "name": "glsl-transition",
   "version": "0.7.0",
-  "description": "Make Transitions Effects with the power of WebGL Shaders (GLSL)",
+  "description": "render GLSL Transitions – transition effects performed with WebGL",
   "keywords": [
     "glsl",
     "webgl",
@@ -13,30 +13,13 @@
   "homepage": "https://github.com/glslio/glsl-transition",
   "author": "Gaëtan Renaudeau <renaudeau.gaetan@gmail.com>",
   "contributors": [],
-  "main": "src/glsl-transition.js",
+  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/glslio/glsl-transition.git"
   },
   "license": "MIT",
   "dependencies": {
-    "glsl-transition-core": "0.2.x",
-    "q": "1.0.x",
-    "raf": "2.0.x",
-    "performance-now": "0.2.x"
-  },
-  "scripts": {
-    "build": "browserify src/glsl-transition.js | uglifyjs -c -m > dist/transition.js",
-    "test": "cd test && beefy index.js"
-  },
-  "devDependencies": {
-    "beefy": "^2.1.3",
-    "browserify": "^9.0.3",
-    "mocha": "^2.2.0",
-    "ndarray": "^1.0.16",
-    "ndarray-distance": "0.0.0",
-    "q": "^1.0.1",
-    "qimage": "^1.2.0",
-    "uglify-js": "^2.4.16"
+    "gl-shader": "^4.0.1"
   }
 }
