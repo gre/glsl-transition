@@ -16,8 +16,8 @@ Q.all([
   canvas.width = 600;
   canvas.height = 400;
   var gl = canvas.getContext("webgl");
-  gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
   if (!gl) throw new Error("webgl context is not supported.");
+  gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
   var from = createTexture(gl, fromImage);
   var to = createTexture(gl, toImage);
   var transitionItem, transition;
