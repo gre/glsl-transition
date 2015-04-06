@@ -1,6 +1,6 @@
 {
   "name": "glsl-transition",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "render GLSL Transitions – transition effects performed with WebGL",
   "keywords": [
     "glsl",
