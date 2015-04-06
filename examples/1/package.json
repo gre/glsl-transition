@@ -1,0 +1,21 @@
+{
+  "name": "1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "budo index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "baboon-image": "^1.0.0",
+    "gl-now": "^1.4.0",
+    "gl-texture2d": "^2.0.8",
+    "lena": "^1.0.0"
+  },
+  "devDependencies": {
+    "budo": "^2.1.4",
+    "watchify": "^3.1.0"
+  }
+}
