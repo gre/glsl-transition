@@ -19,7 +19,7 @@ when `progress` moves between **0.0** and **1.0**.
 
 A GLSL Transition is allowed *(and encouraged)* to have extra uniforms.
 
-# [Example 1](http://glslio.github.io/glsl-transition/examples/1/)
+# [Example 1](http://gre.github.io/glsl-transition/examples/1/)
 
 ```javascript
 var baboon = require("baboon-image");
@@ -46,10 +46,10 @@ shell.on("gl-render", function () {
 });
 ```
 
-[![](http://i.imgur.com/rudrN7f.jpg)](http://glslio.github.io/glsl-transition/examples/1/)
+[![](http://i.imgur.com/rudrN7f.jpg)](http://gre.github.io/glsl-transition/examples/1/)
 
 
-# [Example 2](http://glslio.github.io/glsl-transition/examples/2/)
+# [Example 2](http://gre.github.io/glsl-transition/examples/2/)
 
 ```javascript
 var Q = require("q");
@@ -110,4 +110,4 @@ Q.all([
 document.body.innerHTML = "Loading...";
 ```
 
-[![](http://i.imgur.com/xccLyN8.jpg)](http://glslio.github.io/glsl-transition/examples/2/)
+[![](http://i.imgur.com/xccLyN8.jpg)](http://gre.github.io/glsl-transition/examples/2/)
