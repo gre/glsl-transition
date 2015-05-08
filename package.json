@@ -10,13 +10,13 @@
     "shaders",
     "animation"
   ],
-  "homepage": "https://github.com/glslio/glsl-transition",
+  "homepage": "https://github.com/gre/glsl-transition",
   "author": "Gaëtan Renaudeau <renaudeau.gaetan@gmail.com>",
   "contributors": [],
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/glslio/glsl-transition.git"
+    "url": "https://github.com/gre/glsl-transition.git"
   },
   "license": "MIT",
   "dependencies": {
