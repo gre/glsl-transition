@@ -119,11 +119,11 @@ document.body.innerHTML = "Loading...";
 ```javascript
 var raf = require("raf");
 var createTexture = require("gl-texture2d");
-var createTransition = require("../..");
+var createTransition = require("glsl-transition");
 var GlslTransitions = require("glsl-transitions").sort(function (a, b) {
   return b.stars - a.stars;
 });
-var videos = require("./videos");
+var videos = require("./videos"); // Some logic to handle video load (this is a promise of videos)
 
 videos.then(function (videos) {
 
