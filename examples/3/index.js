@@ -1,34 +1,40 @@
-var Q = require("q");
-var Qimage = require("qimage");
 var raf = require("raf");
+var createTexture = require("gl-texture2d");
+var createTransition = require("../..");
 var GlslTransitions = require("glsl-transitions").sort(function (a, b) {
   return b.stars - a.stars;
 });
-var createTexture = require("gl-texture2d");
-var createTransition = require("../..");
+var videos = require("./videos");
 
-Q.all([
-  Qimage.anonymously("http://i.imgur.com/N8a9CkZ.jpg"),
-  Qimage.anonymously("http://i.imgur.com/MQtLWbD.jpg")
-]).spread(function (fromImage, toImage) {
+videos.then(function (videos) {
+
   var canvas = document.createElement("canvas");
   canvas.style.display = "block";
   canvas.width = 600;
   canvas.height = 400;
   var gl = canvas.getContext("webgl");
   if (!gl) throw new Error("webgl context is not supported.");
+
   gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
-  var from = createTexture(gl, fromImage);
-  var to = createTexture(gl, toImage);
+  var from = createTexture(gl, videos[0]);
+  var to = createTexture(gl, videos[1]);
   var transitionItem, transition;
+
+  var duration = 1500;
+
+  videos.forEach(function (video) {
+    video.loop = true;
+    video.play();
+  });
 
   raf(function loop (t) {
     raf(loop);
-    if (transition) {
-      var progress = (t/1500) % 2;
-      if (progress > 1) progress = 2 - progress; // backwards
-      transition.render(progress, from, to, transitionItem.uniforms);
-    }
+    var i = Math.floor(t / duration) % videos.length;
+    var j = (i + 1) % videos.length;
+    from.setPixels(videos[i]);
+    to.setPixels(videos[j]);
+    var progress = (t % duration) / duration;
+    if (transition) transition.render(progress, from, to, transitionItem.uniforms);
   });
 
   function setTransition (i) {

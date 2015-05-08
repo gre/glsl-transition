@@ -19,9 +19,7 @@ when `progress` moves between **0.0** and **1.0**.
 
 A GLSL Transition is allowed *(and encouraged)* to have extra uniforms.
 
-# Example 1
-
-Run it: `cd examples/1; npm install; npm start`
+# [Example 1](http://glslio.github.io/glsl-transition/examples/1/)
 
 ```javascript
 var baboon = require("baboon-image");
@@ -48,12 +46,10 @@ shell.on("gl-render", function () {
 });
 ```
 
-![](http://i.imgur.com/rudrN7f.jpg)
+[![](http://i.imgur.com/rudrN7f.jpg)](http://glslio.github.io/glsl-transition/examples/1/)
 
 
-# Example 2
-
-Run it: `cd examples/2; npm install; npm start`
+# [Example 2](http://glslio.github.io/glsl-transition/examples/2/)
 
 ```javascript
 var Q = require("q");
@@ -74,8 +70,8 @@ Q.all([
   canvas.width = 600;
   canvas.height = 400;
   var gl = canvas.getContext("webgl");
-  gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
   if (!gl) throw new Error("webgl context is not supported.");
+  gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
   var from = createTexture(gl, fromImage);
   var to = createTexture(gl, toImage);
   var transitionItem, transition;
@@ -114,4 +110,77 @@ Q.all([
 document.body.innerHTML = "Loading...";
 ```
 
-![](http://i.imgur.com/xccLyN8.jpg)
+[![](http://i.imgur.com/xccLyN8.jpg)](http://glslio.github.io/glsl-transition/examples/2/)
+
+
+
+# [Example 3](http://glslio.github.io/glsl-transition/examples/3/)
+
+**GLSL Transitions performed between Videos**
+
+```javascript
+var raf = require("raf");
+var createTexture = require("gl-texture2d");
+var createTransition = require("../..");
+var GlslTransitions = require("glsl-transitions").sort(function (a, b) {
+  return b.stars - a.stars;
+});
+var videos = require("./videos");
+
+videos.then(function (videos) {
+
+  var canvas = document.createElement("canvas");
+  canvas.style.display = "block";
+  canvas.width = 600;
+  canvas.height = 400;
+  var gl = canvas.getContext("webgl");
+  if (!gl) throw new Error("webgl context is not supported.");
+
+  gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
+  var from = createTexture(gl, videos[0]);
+  var to = createTexture(gl, videos[1]);
+  var transitionItem, transition;
+
+  var duration = 1500;
+
+  videos.forEach(function (video) {
+    video.loop = true;
+    video.play();
+  });
+
+  raf(function loop (t) {
+    raf(loop);
+    var i = Math.floor(t / duration) % videos.length;
+    var j = (i + 1) % videos.length;
+    from.setPixels(videos[i]);
+    to.setPixels(videos[j]);
+    var progress = (t % duration) / duration;
+    if (transition) transition.render(progress, from, to, transitionItem.uniforms);
+  });
+
+  function setTransition (i) {
+    transitionItem = GlslTransitions[i];
+    if (transition) transition.dispose();
+    transition = createTransition(gl, transitionItem.glsl);
+  }
+
+  var select = document.createElement("select");
+  select.style.width = "600px";
+  GlslTransitions.forEach(function (t) {
+    var option = document.createElement("option");
+    option.textContent = t.name;
+    select.appendChild(option);
+  });
+  select.addEventListener("change", function () {
+    setTransition(select.selectedIndex);
+  });
+  setTransition(select.selectedIndex);
+
+  document.body.innerHTML = "";
+  document.body.appendChild(select);
+  document.body.appendChild(canvas);
+}).done();
+document.body.innerHTML = "Loading...";
+```
+
+[![](http://i.imgur.com/XgesmfO.jpg)](http://glslio.github.io/glsl-transition/examples/3/)

@@ -1,5 +1,5 @@
 {
-  "name": "2",
+  "name": "3",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,9 +10,9 @@
   "license": "ISC",
   "dependencies": {
     "gl-texture2d": "^2.0.8",
-    "glsl-transitions": "^2015.4.6",
-    "q": "^1.2.0",
-    "qimage": "^1.3.0",
+    "glsl-transitions": "^2015.5.8",
+    "q": "^1.3.0",
+    "qajax": "^1.2.0",
     "raf": "^2.0.4"
   },
   "devDependencies": {
